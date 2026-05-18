@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d8a4e"/>
+      <stop offset="100%" stop-color="#1f5a3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#g)"/>
+  <!-- giant A -->
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+        font-family="'Fredoka', 'Comic Sans MS', system-ui, sans-serif"
+        font-weight="900" font-size="340" fill="#fff8e1"
+        style="paint-order: stroke; stroke: rgba(0,0,0,0.18); stroke-width: 8;">A</text>
+  <!-- paw print bottom right -->
+  <g transform="translate(360,360)" fill="#ffd84d" opacity="0.95">
+    <circle cx="0" cy="0" r="38"/>
+    <circle cx="-32" cy="-32" r="14"/>
+    <circle cx="0" cy="-44" r="14"/>
+    <circle cx="32" cy="-32" r="14"/>
+    <circle cx="-22" cy="-8" r="11"/>
+    <circle cx="22" cy="-8" r="11"/>
+  </g>
+</svg>

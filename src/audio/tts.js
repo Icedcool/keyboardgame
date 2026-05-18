@@ -101,3 +101,10 @@ export function speak(text, opts = {}) {
 export function isReady() {
   return voicesReady;
 }
+
+// Some voices (macOS Samantha, certain Microsoft voices) announce uppercase
+// single letters as "capital K". Lowercasing produces the plain letter-name
+// pronunciation everywhere.
+export function speakLetter(letter, opts) {
+  return speak(String(letter || '').toLowerCase(), opts);
+}

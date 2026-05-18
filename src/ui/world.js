@@ -73,7 +73,7 @@ export function render(world, navigate) {
     const animal = picker.next(world, letter);
     renderLetter(stage, letter, world);
 
-    await tts.speak(letter, { pitch: 1.2, rate: 0.9 });
+    await tts.speakLetter(letter, { pitch: 1.2, rate: 0.9 });
     if (gen !== generation) return;
 
     await tts.speak(PHONETICS[letter] || letter.toLowerCase(), { pitch: 1.1, rate: 0.85 });

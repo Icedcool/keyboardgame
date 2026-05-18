@@ -67,7 +67,7 @@ export function renderFindLetter(world, navigate) {
   async function speakPrompt() {
     tts.cancelAll();
     await tts.speak('Find the letter');
-    await tts.speak(game.target, { pitch: 1.2 });
+    await tts.speakLetter(game.target, { pitch: 1.2 });
   }
 
   paintTarget();
@@ -83,7 +83,7 @@ export function renderFindLetter(world, navigate) {
       // Full reaction: speak the letter + phonetic, then advance.
       tts.cancelAll();
       stage.innerHTML = `<div class="letter letter--${world}">${before}</div>`;
-      await tts.speak(before, { pitch: 1.2 });
+      await tts.speakLetter(before, { pitch: 1.2 });
       if (myGen !== gen) return;
       await tts.speak(PHONETICS[before] || '', { pitch: 1.1, rate: 0.85 });
       if (myGen !== gen) return;
@@ -103,7 +103,7 @@ export function renderFindLetter(world, navigate) {
       // Re-prompt
       tts.cancelAll();
       await tts.speak('Try again!');
-      await tts.speak(game.target, { pitch: 1.2 });
+      await tts.speakLetter(game.target, { pitch: 1.2 });
     }
   }
   keys.setHandler(onKey);
@@ -172,7 +172,7 @@ export function renderFindAnimal(world, navigate) {
       stage.innerHTML = `
         <div class="letter letter--${world}">${beforeLetter}</div>
         <div class="minigame__hint-animal"><img src="./animals/${beforeAnimal.slug}.svg" alt="${beforeAnimal.name}" /></div>`;
-      await tts.speak(beforeLetter, { pitch: 1.2 });
+      await tts.speakLetter(beforeLetter, { pitch: 1.2 });
       if (myGen !== gen) return;
       await tts.speak(beforeAnimal.name, { pitch: 1.15 });
       if (myGen !== gen) return;

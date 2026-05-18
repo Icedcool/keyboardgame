@@ -613,7 +613,50 @@ body {
 
 /* -------- RESPONSIVE / SMALL SCREEN -------- */
 @media (max-width: 600px) {
+  .home {
+    padding: 3vh 3vw;
+    gap: 1.5vh;
+  }
+  .home__title {
+    margin-bottom: 0.3vh;
+  }
+  .home__sub {
+    margin-bottom: 2vh;
+  }
   .home__worlds {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2vw;
+    width: 100%;
+  }
+  .world-tile { gap: 0.4rem; }
+  .world-tile__label { font-size: clamp(0.9rem, 3.4vw, 1.2rem); }
+  .world-tile__count { font-size: clamp(0.65rem, 2.4vw, 0.9rem); }
+  .home__nav { margin-top: 2vh; }
+}
+
+/* Short viewports (landscape phone): vh-driven sizing, top-aligned. */
+@media (max-height: 500px) {
+  .home {
+    padding: 2vh 3vw;
+    justify-content: flex-start;
+  }
+  .home__title {
+    font-size: clamp(1.6rem, 8vh, 2.6rem);
+    margin-bottom: 0.3vh;
+  }
+  .home__sub {
+    font-size: clamp(0.8rem, 3vh, 1.1rem);
+    margin-bottom: 1.2vh;
+  }
+  .world-tile__art {
+    aspect-ratio: 1.4 / 1;
+    font-size: clamp(2rem, 12vh, 4rem);
+  }
+  .world-tile__label { font-size: clamp(0.85rem, 4vh, 1.2rem); }
+  .world-tile__count { font-size: clamp(0.65rem, 2.6vh, 0.9rem); }
+  .home__nav { margin-top: 1.2vh; }
+  .btn--big {
+    font-size: clamp(0.9rem, 4vh, 1.2rem);
+    padding: 0.5em 1.2em;
   }
 }

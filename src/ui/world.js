@@ -7,7 +7,6 @@ import * as keys from '../engine/keys.js';
 import * as tts from '../audio/tts.js';
 import * as sfx from '../audio/sfx.js';
 import * as beeps from '../audio/beeps.js';
-import { PHONETICS } from '../engine/phonetics.js';
 import { renderLetter } from '../render/letter.js';
 import { renderAnimal } from '../render/animal.js';
 import { mount as mountKeyboard } from './keyboard.js';
@@ -74,9 +73,6 @@ export function render(world, navigate) {
     renderLetter(stage, letter, world);
 
     await tts.speakLetter(letter, { pitch: 1.2, rate: 0.9 });
-    if (gen !== generation) return;
-
-    await tts.speak(PHONETICS[letter] || letter.toLowerCase(), { pitch: 1.1, rate: 0.85 });
     if (gen !== generation) return;
 
     if (animal) {

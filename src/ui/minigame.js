@@ -6,7 +6,6 @@ import * as tts from '../audio/tts.js';
 import * as sfx from '../audio/sfx.js';
 import * as beeps from '../audio/beeps.js';
 import { createFindLetter, createFindAnimal } from '../engine/minigames.js';
-import { PHONETICS } from '../engine/phonetics.js';
 import { mount as mountKeyboard } from './keyboard.js';
 import { WORLDS } from '../data/animals.js';
 
@@ -84,8 +83,6 @@ export function renderFindLetter(world, navigate) {
       tts.cancelAll();
       stage.innerHTML = `<div class="letter letter--${world}">${before}</div>`;
       await tts.speakLetter(before, { pitch: 1.2 });
-      if (myGen !== gen) return;
-      await tts.speak(PHONETICS[before] || '', { pitch: 1.1, rate: 0.85 });
       if (myGen !== gen) return;
       if (res.celebration) {
         beeps.fanfare();

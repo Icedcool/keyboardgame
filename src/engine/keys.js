@@ -19,6 +19,12 @@ export function setHandler(fn) {
   handler = fn;
 }
 
+// Synthesize a keypress from non-keyboard input (on-screen keyboard, etc.).
+export function dispatch(letter) {
+  const key = String(letter || '').toUpperCase();
+  if (handler && A_Z.test(key)) handler(key);
+}
+
 export function install() {
   window.addEventListener('keydown', onKeyDown);
 }

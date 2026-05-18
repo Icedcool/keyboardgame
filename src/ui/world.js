@@ -10,6 +10,7 @@ import * as beeps from '../audio/beeps.js';
 import { PHONETICS } from '../engine/phonetics.js';
 import { renderLetter } from '../render/letter.js';
 import { renderAnimal } from '../render/animal.js';
+import { mount as mountKeyboard } from './keyboard.js';
 import { WORLDS } from '../data/animals.js';
 
 const WORLD_LABELS = { jungle: 'JUNGLE', ocean: 'OCEAN', farm: 'FARM' };
@@ -102,6 +103,7 @@ export function render(world, navigate) {
   }
 
   keys.setHandler(play);
+  const keyboard = mountKeyboard(root);
 
   // Tap on stage (not on animal) also dismisses the letter
   stage.addEventListener('click', (e) => {
@@ -120,6 +122,7 @@ export function render(world, navigate) {
       tts.cancelAll();
       sfx.stop();
       keys.setHandler(null);
+      keyboard.teardown();
     },
   };
 }

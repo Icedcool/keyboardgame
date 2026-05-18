@@ -7,6 +7,7 @@ import * as sfx from '../audio/sfx.js';
 import * as beeps from '../audio/beeps.js';
 import { createFindLetter, createFindAnimal } from '../engine/minigames.js';
 import { PHONETICS } from '../engine/phonetics.js';
+import { mount as mountKeyboard } from './keyboard.js';
 import { WORLDS } from '../data/animals.js';
 
 const WORLD_LABELS = { jungle: 'JUNGLE', ocean: 'OCEAN', farm: 'FARM' };
@@ -106,6 +107,7 @@ export function renderFindLetter(world, navigate) {
     }
   }
   keys.setHandler(onKey);
+  const keyboard = mountKeyboard(root);
 
   return {
     el: root,
@@ -114,6 +116,7 @@ export function renderFindLetter(world, navigate) {
       tts.cancelAll();
       sfx.stop();
       keys.setHandler(null);
+      keyboard.teardown();
     },
   };
 }
@@ -194,6 +197,7 @@ export function renderFindAnimal(world, navigate) {
     }
   }
   keys.setHandler(onKey);
+  const keyboard = mountKeyboard(root);
 
   return {
     el: root,
@@ -202,6 +206,7 @@ export function renderFindAnimal(world, navigate) {
       tts.cancelAll();
       sfx.stop();
       keys.setHandler(null);
+      keyboard.teardown();
     },
   };
 }

@@ -555,6 +555,62 @@ body {
   100% { opacity: 0; }
 }
 
+/* -------- ON-SCREEN KEYBOARD (touch devices) -------- */
+.world[data-world="jungle"] { --world-key-bg: var(--jungle-accent); --world-key-fg: var(--jungle-bg-1); }
+.world[data-world="ocean"]  { --world-key-bg: var(--ocean-accent);  --world-key-fg: var(--ocean-bg-1); }
+.world[data-world="farm"]   { --world-key-bg: var(--farm-bg-2);     --world-key-fg: var(--farm-accent); }
+
+.keyboard {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35vh;
+  padding: 0.8vh 1vw calc(0.8vh + env(safe-area-inset-bottom, 0px));
+  display: none;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 0.6vh 0.8vw;
+  z-index: 25;
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.2);
+  touch-action: manipulation;
+}
+
+.keyboard__key {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1rem, 4.2vw, 2.4rem);
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  background: var(--world-key-bg, #ffffff);
+  color: var(--world-key-fg, #2d2418);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 60ms ease-out, box-shadow 60ms ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard__key:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+}
+
+/* Show keyboard + reflow content on devices without a fine-pointer (touch). */
+@media (hover: none), (pointer: coarse) {
+  .keyboard { display: grid; }
+  .world__stage { inset: 8vh 4vw 37vh; }
+  .world__minigames { bottom: 36vh; }
+  .minigame__streak { bottom: 36vh; }
+}
+
 /* -------- RESPONSIVE / SMALL SCREEN -------- */
 @media (max-width: 600px) {
   .home__worlds {
